@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Ruins - Demo Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="coin-display">💰 <span id="coins">0</span></div>
+            <div class="vip-badge">VIP</div>
+            <div class="timer">⏱️ <span id="timer">6:07:40</span></div>
+        </div>
+
+        <div class="game-canvas">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <div class="game-footer">
+            <div class="footer-btn" onclick="openSettings()">
+                <div class="icon">⚙️</div>
+                <div>Настройки</div>
+            </div>
+            <div class="footer-btn" onclick="shootEnemy()">
+                <div class="icon">💥</div>
+                <div>Стрелять</div>
+            </div>
+            <div class="footer-btn" onclick="openUpgrades()">
+                <div class="icon">🔧</div>
+                <div>Улучшения</div>
+            </div>
+            <div class="footer-btn" onclick="openDaily()">
+                <div class="icon">📅</div>
+                <div>Ежедневный</div>
+            </div>
+            <div class="footer-btn" onclick="openLeaderboard()">
+                <div class="icon">🏆</div>
+                <div>Рейтинг</div>
+            </div>
+        </div>
+
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+        <div class="upgrade-menu" id="upgradeMenu">
+            <h3>Улучшения</h3>
+            <div class="upgrade-item">
+                <div>
+                    <strong>💥 Урон</strong>
+                    <div style="font-size: 12px;">Уровень: <span id="dmgLevel">1</span> | Стоимость: <span id="dmgCost">50</span> 💰</div>
+                </div>
+                <button class="upgrade-btn" onclick="upgradeDamage()">Купить</button>
+            </div>
+            <div class="upgrade-item">
+                <div>
+                    <strong>⚡ Скорость</strong>
+                    <div style="font-size: 12px;">Уровень: <span id="spyLevel">1</span> | Стоимость: <span id="spyCost">50</span> 💰</div>
+                </div>
+                <button class="upgrade-btn" onclick="upgradeSpeed()">Купить</button>
+            </div>
+            <div class="upgrade-item">
+                <div>
+                    <strong>🛡️ Броня</strong>
+                    <div style="font-size: 12px;">Уровень: <span id="armLevel">1</span> | Стоимость: <span id="armCost">50</span> 💰</div>
+                </div>
+                <button class="upgrade-btn" onclick="upgradeArmor()">Купить</button>
+            </div>
+        </div>
+
+        <div class="modal" id="settingsModal">
+            <div class="modal-title">⚙️ Настройки</div>
+            <div class="modal-content">
+                <label>
+                    <input type="checkbox" id="soundToggle" checked> Звук
+                </label>
+                <br><br>
+                <label>
+                    <input type="checkbox" id="vibrationToggle" checked> Вибрация
+                </label>
+            </div>
+            <button class="modal-btn" onclick="closeSettings()">Закрыть</button>
+        </div>
+
+        <div class="modal" id="dailyModal">
+            <div class="modal-title">📅 Ежедневные награды</div>
+            <div class="modal-content" id="dailyRewards">
+                <div class="reward-day">День 20: 100 💰</div>
+                <div class="reward-day">День 40: 250 💰</div>
+                <div class="reward-day">День 60: 500 💰</div>
+            </div>
+            <button class="modal-btn" onclick="closeDailyModal()">Закрыть</button>
+        </div>
+
+        <div class="modal" id="leaderboardModal">
+            <div class="modal-title">🏆 Рейтинг</div>
+            <div class="modal-content" id="leaderboardContent">
+                <div class="leaderboard-item">1. Player1 - 50,000 💰</div>
+                <div class="leaderboard-item">2. Player2 - 45,000 💰</div>
+                <div class="leaderboard-item you">3. Вы - 12,340 💰</div>
+            </div>
+            <button class="modal-btn" onclick="closeLeaderboard()">Закрыть</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
